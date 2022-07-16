@@ -1,5 +1,5 @@
 // listSongs: Body & Overlay 
-const listSongs_songs_main = take_all("#listSongs_songs_main"); 
+const listSongs_songs_main = take_all("#listSongs_songs_main");
 
 // listSongs:
 const playRandom = take_one('.playRandom')
@@ -10,7 +10,7 @@ const listSongs_text = take_one('.listSongs_text')
 const result_found = take_one('.result_found')
 const result_not_found = take_one('.result_not_found')
 const result_found_text = take_one('.result_found_text'),
-result_not_found_text = take_one('.result_not_found_text')
+    result_not_found_text = take_one('.result_not_found_text')
 
 // Side
 const side_input = take_one('.side_input')
@@ -32,18 +32,18 @@ const listAudio = take_one('.listAudio')
 
 // Time progress - Current time & Total time
 const time_progress = take_all('#time_progress'),
-time_progress_nav = take_all('.time_progress_nav'),
-time_progress_nav_update = take_all('.time_progress_nav_update'),
-time_current = take_all('.time_current'),
-time_total = take_all('.time_total')
+    time_progress_nav = take_all('.time_progress_nav'),
+    time_progress_nav_update = take_all('.time_progress_nav_update'),
+    time_current = take_all('.time_current'),
+    time_total = take_all('.time_total')
 
 // Volume 
 const volume__range = take_all('.volume__range'),
-volumn_process_nav = take_all('.volumn_process_nav'),
-volumn_process_update = take_all('.volumn_process_update'),
-volume_icon_contact = take_all('.volume_icon_contact i'),
-volume_up = take_all('.bi-volume-up'),
-volume_mute = take_all('.bi-volume-mute')
+    volumn_process_nav = take_all('.volumn_process_nav'),
+    volumn_process_update = take_all('.volumn_process_update'),
+    volume_icon_contact = take_all('.volume_icon_contact i'),
+    volume_up = take_all('.bi-volume-up'),
+    volume_mute = take_all('.bi-volume-mute')
 
 // Btn controls: prev-forward && random-loop 
 const prev = take_all('.prev')
@@ -67,319 +67,32 @@ const app = {
     isRandom: false,
     isLoop: false,
 
-    // All of the songs
-    // songs: [
-    //     {
-    //         name: "abcdefu",
-    //         author: "GAYLE",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "abcdefu",
-    //         path: "abcdefu - GAYLE",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "Missing You",
-    //         author: "G-Dragon",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "Missing You",
-    //         path: "Missing You - G-Dragon",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "Hết thời",
-    //         author: "Ngọt band",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "het thoi",
-    //         path: "Hết thời - Ngọt",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "Xanh",
-    //         author: "Ngọt band",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "xanh",
-    //         path: "Xanh - Ngọt",
-    //         favorite: 1
-    //     },
-    //     {
-    //         // name: "Glimpse of us",
-    //         // author: "Joji",
-    //         // album: "Album không xác định",
-    //         // time: 2022,
-    //         // type: "Thể loại không xác định",
-    //         // img: "Glimpse of us",
-    //         // path: "Glimpse of us - Joji",
-    //         // favorite: 1
-    //         id: 1,
-    //         name: "dm Tung",
-    //         status: 0,
-    //         artist: "artist",
-    //         songLink: "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
-    //         imgLink: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-    //     },
-    //     {
-    //         name: "Bước qua mùa cô đơn",
-    //         author: "Vũ",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "buoc qua mua co don",
-    //         path: "Bước qua mùa cô đơn - Vũ",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "Outside - 张钰琪",
-    //         author: "NHO NGUYEN REMIX",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "outside",
-    //         path: "Outside - 张钰琪 NHO NGUYEN REMIX"
-    //     },
-    //     {
-    //         name: "Save Your Tears",
-    //         author: "The Weeknd",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "save your tears",
-    //         path: "Save Your Tears - The Weeknd"
-    //     },
-    //     {
-    //         name: "Numb The Pain",
-    //         author: "Clarx Catas Le Malls CHENDA Anikdote",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "numb the pain",
-    //         path: "Numb The Pain - Clarx Catas Le Malls CHENDA Anikdote"
-    //     },
-    //     {
-    //         name: "Love Yourself",
-    //         author: "Justin Bieber",
-    //         album: "Purpose",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "love yourself",
-    //         path: "Love Yourself - Justin Bieber"
-    //     },
-    //     {
-    //         name: "Một ngày không mưa",
-    //         author: "Ngọt band",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "mot ngay khong mua",
-    //         path: "Một ngày không mưa - Ngọt",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "Dead Man Walking",
-    //         author: "Chuxx Morris",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "dead man walking",
-    //         path: "Dead Man Walking - Chuxx Morris"
-    //     },
-    //     {
-    //         name: "Đốt",
-    //         author: "Ngọt band",
-    //         album: "Album không xác định",
-    //         time: 2022,
-    //         type: "Thể loại không xác định",
-    //         img: "dot",
-    //         path: "Đốt - Ngọt",
-    //         favorite: 1
-    //     },
-    //     {
-    //         name: "The Search",
-    //         author: "NF",
-    //         album: "The Search",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "the search",
-    //         path: "The Search - NF"
-    //     },
-    //     {
-    //         name: "It'll Be Okay",
-    //         author: "Shawn Mendes",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "itll be okay",
-    //         path: "Itll Be Okay - Shawn Mendes"
-    //     },
-    //     {
-    //         name: "Dynasty",
-    //         author: "MIIA",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "dynasty",
-    //         path: "Dynasty - MIIA"
-    //     },
-    //     {
-    //         name: "I Love You So",
-    //         author: "The Walters",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "I Love You So",
-    //         path: "I Love You So - The Walters"
-    //     },
-    //     {
-    //         name: "Counting Stars",
-    //         author: "OneRepublic",
-    //         album: "Native",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "Counting Stars",
-    //         path: "Counting Stars - OneRepublic"
-    //     },
-    //     {
-    //         name: "Photograph",
-    //         author: "Ed Sheeran",
-    //         album: "=",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "Photograph",
-    //         path: "Photograph - Ed Sheeran"
-    //     },
-    //     {
-    //         name: "Castle On The Hill",
-    //         author: "Ed Sheeran",
-    //         album: "=",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "Castle On The Hill",
-    //         path: "Castle On The Hill - Ed Sheeran"
-    //     },
-    //     {
-    //         name: "Overpass Graffiti",
-    //         author: "Ed Sheeran",
-    //         album: "=",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "overpass graffiti",
-    //         path: "Overpass Graffiti - Ed Sheeran"
-    //     },
-    //     {
-    //         name: "Bad Habits",
-    //         author: "Ed Sheeran",
-    //         album: "=",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "bad habits",
-    //         path: "Bad Habits - Ed Sheeran"
-    //     },
-    //     {
-    //         name: "Shivers",
-    //         author: "Ed Sheeran",
-    //         album: "=",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "shivers",
-    //         path: "Shivers - Ed Sheeran"
-    //     },
-    //     {
-    //         name: "Lovely",
-    //         author: "Billie Eilish",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "Lovely",
-    //         path: "Lovely - Billie Eilish"
-    //     },
-    //     {
-    //         name: "Everybody Dies In Their Nightmares",
-    //         author: "XXXTENTACION",
-    //         album: "17",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "Everybody Dies In Their Nightmares",
-    //         path: "Everybody Dies In Their Nightmares - XXXTENTACION"
-    //     },
-    //     {
-    //         name: "Crazy",
-    //         author: "Gnarls Barkley",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "crazy",
-    //         path: "Crazy - Gnarls Barkley"
-    //     },
-    //     {
-    //         name: "Em Đây Chẳng Phải Thúy Kiều",
-    //         author: "Hoàng Thùy Linh",
-    //         album: "Album không xác định",
-    //         time: 2021,
-    //         type: "Thể loại không xác định",
-    //         img: "em day dau phai thuy kieu",
-    //         path: "Em Đây Chẳng Phải Thúy Kiều [ Surick Remix ] - Hoàng Thùy Linh"
-    //     }
-    // ],
-    
     songSort_default: [],
     songSort_time: [],
     songSort_name: [],
     songSort_author: [],
     songSort_album: [],
-    songs:songs,
-    
-    backup_songs: function() {
+    songs: songs,
+
+    backup_songs: function () {
         this.songSort_default = this.songs
     },
 
-    defind_sort_list: function(value) {
+    defind_sort_list: function (value) {
         const _this = this
         var tg;
-        this.songs = this.songSort_default
-        
-        function sort_time() {
-            // songSort_time
-            var check = false
-            if(_this.songSort_time.length == 0) {
-                for(let i = 0; i< _this.songs.length; i++) {
-                    _this.songSort_time.push(_this.songs[i])
-                }
-                for(var i = 0; i < _this.songSort_time.length - 1; i++) {
-                    for(var j = i + 1; j < _this.songSort_time.length; j++) {
-                        if(_this.songSort_time[i].time < _this.songSort_time[j].time) {
-                            tg = _this.songSort_time[j]
-                            _this.songSort_time[j] = _this.songSort_time[i]
-                            _this.songSort_time[i] = tg
-                            check = true
-                        }
-                    }
-                }
-            } else {
-                check = true
-            }
-            
-            if(check) {
-                _this.songs = _this.songSort_time
-            } else {
-                sort_name()
-            }
-        }
+        this.songs = this.songSort_default;
+
         function sort_name() {
             // songSort_name
-            if(_this.songSort_name.length == 0) {
-                for(let i = 0; i< _this.songs.length; i++) {
+            if (_this.songSort_name.length == 0) {
+                for (let i = 0; i < _this.songs.length; i++) {
                     _this.songSort_name.push(_this.songs[i])
                 }
             }
-            for(var i = 0; i < _this.songSort_name.length - 1; i++) {
-                for(var j = i + 1; j < _this.songSort_name.length; j++) {
-                    if(_this.songSort_name[i].name.localeCompare(_this.songSort_name[j].name) > 0) {
+            for (var i = 0; i < _this.songSort_name.length - 1; i++) {
+                for (var j = i + 1; j < _this.songSort_name.length; j++) {
+                    if (_this.songSort_name[i].name.localeCompare(_this.songSort_name[j].name) > 0) {
                         tg = _this.songSort_name[j]
                         _this.songSort_name[j] = _this.songSort_name[i]
                         _this.songSort_name[i] = tg
@@ -388,17 +101,18 @@ const app = {
             }
             _this.songs = _this.songSort_name
         }
+
         function sort_author() {
             // songSort_author
 
             var check = false
-            if(_this.songSort_author.length == 0) {
-                for(let i = 0; i< _this.songs.length; i++) {
+            if (_this.songSort_author.length == 0) {
+                for (let i = 0; i < _this.songs.length; i++) {
                     _this.songSort_author.push(_this.songs[i])
                 }
-                for(var i = 0; i < _this.songSort_author.length - 1; i++) {
-                    for(var j = i + 1; j < _this.songSort_author.length; j++) {
-                        if(_this.songSort_author[i].author.localeCompare(_this.songSort_author[j].author) > 0) {
+                for (var i = 0; i < _this.songSort_author.length - 1; i++) {
+                    for (var j = i + 1; j < _this.songSort_author.length; j++) {
+                        if (_this.songSort_author[i].artist.localeCompare(_this.songSort_author[j].artist) > 0) {
                             tg = _this.songSort_author[j]
                             _this.songSort_author[j] = _this.songSort_author[i]
                             _this.songSort_author[i] = tg
@@ -409,73 +123,40 @@ const app = {
             } else {
                 check = true
             }
-            
 
-            if(check) {
+
+            if (check) {
                 _this.songs = _this.songSort_author
             } else {
                 sort_name()
             }
         }
-        function sort_album() {
-            // songSort_album
-            var check = false
-            if(_this.songSort_album.length == 0) {
-                for(let i = 0; i< _this.songs.length; i++) {
-                    _this.songSort_album.push(_this.songs[i])
-                }
-                for(var i = 0; i < _this.songSort_album.length - 1; i++) {
-                    for(var j = i + 1; j < _this.songSort_album.length; j++) {
-                        if(_this.songSort_album[i].album.localeCompare(_this.songSort_album[j].album) > 0) {
-                            tg = _this.songSort_album[j]
-                            _this.songSort_album[j] = _this.songSort_album[i]
-                            _this.songSort_album[i] = tg
-                            check = true
-                        }
-                    }
-                }
-            } else {
-                check = true
-            }
 
-            if(check) {
-                _this.songs = _this.songSort_album
-            } else {
-                sort_name()
-            }
-        }
-
-        if(value == "default") {
+        if (value == "default") {
             _this.songs = _this.songSort_default
             _this.render()
-        } else if(value == "time") {
-            sort_time()
-            _this.render()
-        } else if(value == "name") {
+        } else if (value == "name") {
             sort_name()
             _this.render()
-        } else if(value == "author") {
+        } else if (value == "author") {
             sort_author()
-            _this.render()
-        } else if(value == "album") {
-            sort_album()
             _this.render()
         }
     },
 
-    render_authors: function() {
+    render_authors: function () {
         const listSongs_authors_list = take_one('.listSongs_authors_list')
         const authors_temporary = []
-        for(let i = 0; i < this.songSort_default.length ; i++) {
+        for (let i = 0; i < this.songSort_default.length; i++) {
             authors_temporary.push(this.songSort_default[i].author)
         }
 
         // Filter trả về mảng phần tử thỏa mãn điều kiện || Find chỉ chả về 1 phần tử
-        var authors = authors_temporary.filter(function(item, index) {
-            return authors_temporary.indexOf(item) === index 
+        var authors = authors_temporary.filter(function (item, index) {
+            return authors_temporary.indexOf(item) === index
         })
 
-        const htmls = authors.map(function(author, index) {
+        const htmls = authors.map(function (author, index) {
             return `
                 <div class="listSongs_authors_content">
                     <div class="listSongs_authors_content_img">
@@ -492,69 +173,9 @@ const app = {
         listSongs_authors_list.innerHTML = htmls.join("")
     },
 
-    render_albums: function() {
-        const listSongs_albums_list = take_one('.listSongs_albums_list')
-        const albums_temporary = []
-        for(let i = 0; i < this.songSort_default.length ; i++) {
-            albums_temporary.push(this.songSort_default[i].album)
-        }
-        
-        // Filter trả về mảng phần tử thỏa mãn điều kiện || Find chỉ chả về 1 phần tử
-        var albums = albums_temporary.filter(function(item, index) {
-            return albums_temporary.indexOf(item) === index 
-        })
-        const htmls = albums.map(function(album, index) {
-            return `
-                <div class="listSongs_albums_content">
-                    <div class="listSongs_albums_content_img">
-                        <img src="./a_imgs/Albums/${album}.jpg" alt="">
-                        <div class="listSongs_albums_content_icons">
-                            <div title="Phát tất cả" class="listSongs_albums_content_icons--play"><i class="bi bi-play"></i></div>
-                            <div title="Thêm vào" class="listSongs_albums_content_icons--plus"><i class="bi bi-plus-lg"></i></div>
-                        </div>
-                    </div>
-                    <div class="listSongs_albums_content_name">${album}</div>
-                </div>
-            `
-        })
-        listSongs_albums_list.innerHTML = htmls.join("")
-    },
+    render: function () {
 
-    // render: function() {
-
-    //     const htmls = this.songs.map(function(song, index) {
-    //         return `
-    //         <div class="song "  data-index="${index}"> 
-    //             <div class="song_responsiveDetails song_playing">
-    //                 <div class="song_playing_details">
-                        
-    //                     <div class="song_name">${song.name}</div>
-    //                 </div>
-    //                 <p class="song_details">${song.author} • ${song.album}</p>
-    //             </div>
-    //             <div class="song_author">${song.author}</div>
-    //             <div class="song_album">${song.album}</div>
-    //             <div class="song_date">${song.time}</div>
-    //             <div class="song_type">${song.type}</div>
-    //             <div class="song_time"></div>
-    //             <audio class="audio_inSong" src="./b_songs/${song.path}.mp3"></audio>
-    //         </div>
-    //     `
-    //     })
-        
-        
-        
-    //     // Inner HTML to 2 list song from: Body & Overlay
-    //     listSongs_songs_main.forEach(function(list) {
-    //         list.innerHTML = htmls.join("")
-    //     })
-        
-    //     this.load_duration_songs()
-    // },
-
-    render: function() {
-
-        const htmls = this.songs.map(function(song, index) {
+        const htmls = this.songs.map(function (song, index) {
             console.log(song);
             return `
             <div class="song "  data-index="${index}">
@@ -575,28 +196,25 @@ const app = {
             </div>
         `
         })
-        
-        
-        
+
+
         // Inner HTML to 2 list song from: Body & Overlay
-        listSongs_songs_main.forEach(function(list) {
+        listSongs_songs_main.forEach(function (list) {
             list.innerHTML = htmls.join("")
         })
-        
-        this.load_duration_songs()
     },
 
     // Xét cho object app thêm 1 thuộc tính là currentSong
     // Lấy giá trị của bài hát hiện tại
-    defineProperties: function() {
+    defineProperties: function () {
         Object.defineProperty(this, "currentSong", {
-            get: function() {
+            get: function () {
                 return this.songs[this.currentIndex]
             }
-        }) 
+        })
     },
 
-    handleEvents: function() {
+    handleEvents: function () {
         const _this = this
         var isMoving = false
 
@@ -614,67 +232,67 @@ const app = {
         })
         info_image_animate.pause() // Footer img
         overlay_info_img_animate.pause() // Overlay img
-        
+
         // Xử lý khi click play
-        btn_play_pause.forEach(function(btn){
+        btn_play_pause.forEach(function (btn) {
             // Phát nhạc
-            btn.onclick = function() {
-                if(_this.isPlaying) {
-                    audio.pause()                
+            btn.onclick = function () {
+                if (_this.isPlaying) {
+                    audio.pause()
                     return
                 } else {
-                    audio.play()                
+                    audio.play()
                 }
             }
         })
 
-    
+
         // ================================AUDIO================================
         // Duration current song
-        audio.onloadeddata = function() {
+        audio.onloadeddata = function () {
             const time_totalTimes = take_all('.time_totalTime')
             const duration = audio.duration
-            let minutes =  Math.floor(duration / 60)
+            let minutes = Math.floor(duration / 60)
             let seconds = Math.floor(duration % 60)
-            time_totalTimes.forEach(function(time_totalTime) {
-                time_totalTime.textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
+            time_totalTimes.forEach(function (time_totalTime) {
+                time_totalTime.textContent = `${minutes}:${seconds >= 10 ? seconds : "0" + seconds}`
             })
-                
+
         }
         // Set isPlaying % UI
-        audio.onplay = function() {
+        audio.onplay = function () {
             _this.isPlaying = true
-            for(var i = 0; i < btn_play_pause.length; i++) {
+            for (var i = 0; i < btn_play_pause.length; i++) {
                 btn_play_pause[i].classList.add('playing')
             }
-            info_image_animate.play() 
+            info_image_animate.play()
             overlay_info_img_animate.play()
         }
-        audio.onpause = function() { 
+        audio.onpause = function () {
             _this.isPlaying = false
-            for(var i = 0; i < btn_play_pause.length; i++) {
+            for (var i = 0; i < btn_play_pause.length; i++) {
                 btn_play_pause[i].classList.remove('playing')
             }
-            info_image_animate.pause() 
+            info_image_animate.pause()
             overlay_info_img_animate.pause()
         }
         // Tiến độ bài hát thay đổi - Time Update
-        audio.ontimeupdate = function() {
-            if(audio.duration) {
+        audio.ontimeupdate = function () {
+            if (audio.duration) {
                 // If it's not moving 
-                if(isMoving == false) {
+                if (isMoving == false) {
                     time_progress
                     const currentProgress = (audio.currentTime / audio.duration) * 100
                     // chiều dài thẻ div
-                    time_progress_nav_update.forEach(function(e_nav_update) {
+                    time_progress_nav_update.forEach(function (e_nav_update) {
                         e_nav_update.style.width = currentProgress + '%'
                     })
 
                     // change contentText 
                     let minutes = Math.floor(audio.currentTime / 60)
                     let seconds = Math.floor(audio.currentTime % 60)
-                    time_current.forEach(function(e) {
-                        e.textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
+                    time_current.forEach(function (e) {
+                        e.textContent = `${minutes}:${seconds >= 10 ? seconds : "0" + seconds}`
                     })
                 }
 
@@ -682,12 +300,12 @@ const app = {
         }
         // Xử lý khi hết bài hát 
         // Sẽ phụ thuộc vào random & loop
-        audio.onended = function() {
-            if(_this.isLoop) {
+        audio.onended = function () {
+            if (_this.isLoop) {
                 audio.play()
             } else {
 
-                if(_this.isRandom) {
+                if (_this.isRandom) {
                     _this.randomSong()
                 } else {
                     _this.nextSong()
@@ -697,24 +315,24 @@ const app = {
             }
         }
         // =====================================================================
-        
+
         // Khi thay đổi thanh thời gian
-        time_progress.forEach(function(element) {
-            function change_time() { 
+        time_progress.forEach(function (element) {
+            function change_time() {
                 isMoving = true // Đang di chuyển thanh thời gian
-                if(isMoving) {
+                if (isMoving) {
                     // (seekTime / audio.duration) * 100
-                    
-                    const seekTime = element.value * audio.duration / 100 
-                    time_progress_nav_update.forEach(function(e_nav_update) {
+
+                    const seekTime = element.value * audio.duration / 100
+                    time_progress_nav_update.forEach(function (e_nav_update) {
                         e_nav_update.style.width = (seekTime / audio.duration) * 100 + '%'
                     })
-                    element.onmouseup = function() {
+                    element.onmouseup = function () {
                         // thời gian tại địa điểm changed
                         audio.currentTime = seekTime
                         isMoving = false // Đang không di chuyển thanh thời gian
                     }
-                    element.ontouchend = function() {
+                    element.ontouchend = function () {
                         // thời gian tại địa điểm changed
                         audio.currentTime = seekTime
                         isMoving = false // Đang không di chuyển thanh thời gian
@@ -723,11 +341,12 @@ const app = {
                     let minutes = Math.floor(seekTime / 60)
                     let seconds = Math.floor(seekTime % 60)
                     // change contentText 
-                    time_current.forEach(function(e) {
-                        e.textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
+                    time_current.forEach(function (e) {
+                        e.textContent = `${minutes}:${seconds >= 10 ? seconds : "0" + seconds}`
                     })
                 }
             }
+
             element.oninput = change_time
             element.ontouchstart = change_time;
             element.ontouchend = change_time;
@@ -737,25 +356,25 @@ const app = {
         // Xử lý click volumn âm thanh - \f60d
         var check_volume = false
         var volume_current
-        volume_icon_contact.forEach(function(element) {
-            element.onclick = function() {
+        volume_icon_contact.forEach(function (element) {
+            element.onclick = function () {
 
-                if(volume_current == 0) {
-                    for(var i=0; i<volume_up.length;i++) {
-                        volume_up[i].classList.toggle('active') 
+                if (volume_current == 0) {
+                    for (var i = 0; i < volume_up.length; i++) {
+                        volume_up[i].classList.toggle('active')
                         volume_mute[i].classList.toggle('active')
                     }
                     audio.volume = 1
                     volume_current = audio.volume
-                    volumn_process_update.forEach(function(e) {
-                        e.style.width = audio.volume*100 + '%'
+                    volumn_process_update.forEach(function (e) {
+                        e.style.width = audio.volume * 100 + '%'
                     })
                 } else {
-                    if(!check_volume) {
+                    if (!check_volume) {
                         audio.volume = 0
                         check_volume = true
                     } else {
-                        if(volume_current > 0) {
+                        if (volume_current > 0) {
                             audio.volume = volume_current
                             check_volume = false
                         } else {
@@ -763,33 +382,32 @@ const app = {
                             check_volume = false
                         }
                     }
-                    for(var i=0; i<volume_up.length;i++) {
-                        volume_up[i].classList.toggle('active') 
+                    for (var i = 0; i < volume_up.length; i++) {
+                        volume_up[i].classList.toggle('active')
                         volume_mute[i].classList.toggle('active')
                     }
                 }
 
-                
 
             }
         })
         // Khi thay đổi thanh Volume
-        volume__range.forEach(function(element) {
-            element.oninput = function() {
-                volumn_process_update.forEach(function(e) {
+        volume__range.forEach(function (element) {
+            element.oninput = function () {
+                volumn_process_update.forEach(function (e) {
                     e.style.width = element.value + '%'
                 })
-            
+
                 audio.volume = element.value / 100
                 volume_current = audio.volume
-                if(volume_current == 0) { 
-                    for(var i=0; i<volume_up.length;i++) {
-                        volume_up[i].classList.add('active') 
+                if (volume_current == 0) {
+                    for (var i = 0; i < volume_up.length; i++) {
+                        volume_up[i].classList.add('active')
                         volume_mute[i].classList.add('active')
                     }
                 } else {
-                    for(var i=0; i<volume_up.length;i++) {
-                        volume_up[i].classList.remove('active') 
+                    for (var i = 0; i < volume_up.length; i++) {
+                        volume_up[i].classList.remove('active')
                         volume_mute[i].classList.remove('active')
                     }
                 }
@@ -799,9 +417,9 @@ const app = {
 
 
         // Khi next sang bài hát
-        forward.forEach(function(e) {
-            e.onclick = function() {
-                if(_this.isRandom) {
+        forward.forEach(function (e) {
+            e.onclick = function () {
+                if (_this.isRandom) {
                     _this.randomSong()
                 } else {
                     _this.nextSong()
@@ -811,9 +429,9 @@ const app = {
             }
         })
         // Khi prev lùi bài hát 
-        prev.forEach(function(e) {
-            e.onclick = function() {
-                if(_this.isRandom) {
+        prev.forEach(function (e) {
+            e.onclick = function () {
+                if (_this.isRandom) {
                     _this.randomSong()
                 } else {
                     _this.prevSong()
@@ -824,26 +442,26 @@ const app = {
         })
 
         // Khi click random
-        random.forEach(function(e) {
-            e.onclick = function() {
+        random.forEach(function (e) {
+            e.onclick = function () {
                 _this.isRandom = !_this.isRandom
                 // Đối số thứ 2 của toggle là lấy giá trị boolean để kiếm tra
-                for(var i = 0; i < random.length; i++) {
+                for (var i = 0; i < random.length; i++) {
                     random[i].classList.toggle('active', _this.isRandom)
                 }
             }
         })
         // Khi click loop
-        loop.forEach(function(e) {
-            e.onclick = function() {
+        loop.forEach(function (e) {
+            e.onclick = function () {
                 _this.isLoop = !_this.isLoop
                 console.log(_this.isLoop)
-                if(_this.isLoop) {
-                    for(var i = 0; i < loop.length; i++) {
+                if (_this.isLoop) {
+                    for (var i = 0; i < loop.length; i++) {
                         loop[i].classList.add('active', _this.isLoop)
                     }
                 } else {
-                    for(var i = 0; i < loop.length; i++) {
+                    for (var i = 0; i < loop.length; i++) {
                         loop[i].classList.remove('active', _this.isLoop)
                     }
                 }
@@ -851,14 +469,14 @@ const app = {
         })
 
         // Lắng nghe hành vi click vào play list
-        listSongs_songs_main.forEach(function(listSong) {
-            listSong.onclick = function(element) {
+        listSongs_songs_main.forEach(function (listSong) {
+            listSong.onclick = function (element) {
                 const songNode = element.target.closest('.song:not(.active)')
                 // && not options ! e.target.closest('.option)
-                if(songNode) {
+                if (songNode) {
 
                     // Xử lý click vào bài hát
-                    if(songNode) {
+                    if (songNode) {
                         // songNode.getAttribute('data-index') = songNode.dataset.index
                         // Dạng chuỗi <=> convert to number
                         _this.currentIndex = Number(songNode.dataset.index)
@@ -874,26 +492,26 @@ const app = {
         })
 
         // Click randomPlay btn - body | listSongs
-        playRandom.onclick = function() {
+        playRandom.onclick = function () {
             // _this.isRandom = !_this.isRandom
             _this.randomPlay()
             _this.scrollToActiveSong()
         }
 
         // Xử lý sự kiện thay dổi options sortList
-        options.onchange = function() {
+        options.onchange = function () {
             _this.defind_sort_list(options.value)
             // Song.active - Stupid
-            listSongs_songs_main.forEach(function(e) {
+            listSongs_songs_main.forEach(function (e) {
 
                 const songs = e.querySelectorAll('.song')
                 const songs_active = e.querySelectorAll('.song.active')
                 const audio_inSong = e.querySelectorAll('.song .audio_inSong')
-            
-                songs.forEach(function(song, index) {
-                    if(audio_inSong[index].src == audio.src) {
+
+                songs.forEach(function (song, index) {
+                    if (audio_inSong[index].src == audio.src) {
                         _this.currentIndex = Number(song.dataset.index)
-                        songs_active.forEach(function(song_active) {
+                        songs_active.forEach(function (song_active) {
                             song_active.classList.remove('active')
                         })
                         song.classList.add('active')
@@ -903,50 +521,50 @@ const app = {
             })
         }
 
-                
+
         // Xử lý tìm kiếm bài hát
-        search_input.addEventListener('keydown', function(event) {
-            if(event.key == "Enter") {
-                handle_result() 
+        search_input.addEventListener('keydown', function (event) {
+            if (event.key == "Enter") {
+                handle_result()
                 var windowWidth = $(document).width();
-                if(windowWidth < 1020) {
+                if (windowWidth < 1020) {
                     side_narbar_menu.click()
                 }
             }
         })
-        
+
         function handle_result() {
-            if(side_input.value != "") {
+            if (side_input.value != "") {
                 // ====================UI====================
                 // Side
                 var item_active = take_one('.side_content-item.active')
-                if(item_active) {
+                if (item_active) {
                     item_active.classList.remove('active')
                 }
-                
+
                 // listSongs & result
                 listSongs.classList.add('display_none')
                 result.classList.add('display_block')
                 // ==========================================
-                
-                
+
+
                 var array_temporary = []
-                for(let i = 0; i< _this.songs.length; i++) {
+                for (let i = 0; i < _this.songs.length; i++) {
                     const a = _this.songs[i].name.toLowerCase()
                     const b = side_input.value.toLowerCase()
                     const check = a.indexOf(b)
-                    if(check >= 0) {
+                    if (check >= 0) {
                         array_temporary.push(_this.songs[i])
                     }
                 }
-                
+
                 // Tìm thấy
-                if(array_temporary.length > 0) {
+                if (array_temporary.length > 0) {
                     result_found_text.innerHTML = `Results "${side_input.value}"`
-                    
+
                     _this.songs = array_temporary
                     _this.render()
-                    
+
                     result_found.classList.remove('display_none')
                     result_not_found.classList.add('display_none')
 
@@ -955,31 +573,32 @@ const app = {
                     const songs = result_found_listSongs.querySelectorAll('.song')
                     const songs_audio = result_found_listSongs.querySelectorAll('.song audio')
                     const songs_active = result_found_listSongs.querySelectorAll('.song.active')
-                    
+
                     function forward_song() {
-                        songs.forEach(function(song, index) {
-                            if(songs_audio[index].src == audio.src) {
-                                songs_active.forEach(function(song_active) {
+                        songs.forEach(function (song, index) {
+                            if (songs_audio[index].src == audio.src) {
+                                songs_active.forEach(function (song_active) {
                                     song_active.classList.remove('active')
                                 })
                                 song.classList.add('active')
                             } else {
-                                songs_active.forEach(function(song_active) {
+                                songs_active.forEach(function (song_active) {
                                     song_active.classList.remove('active')
                                 })
                                 song.classList.remove('active')
                             }
                         })
                     }
+
                     function prev_song() {
-                        songs.forEach(function(song, index) {
-                            if(songs_audio[index].src == audio.src) {
-                                songs_active.forEach(function(song_active) {
+                        songs.forEach(function (song, index) {
+                            if (songs_audio[index].src == audio.src) {
+                                songs_active.forEach(function (song_active) {
                                     song_active.classList.remove('active')
                                 })
                                 song.classList.add('active')
                             } else {
-                                songs_active.forEach(function(song_active) {
+                                songs_active.forEach(function (song_active) {
                                     song_active.classList.remove('active')
                                 })
                                 song.classList.remove('active')
@@ -988,9 +607,9 @@ const app = {
                     }
 
                     // Next song of RESULT
-                    forward.forEach(function(e) {
-                        e.onclick = function() {
-                            if(_this.isRandom) {
+                    forward.forEach(function (e) {
+                        e.onclick = function () {
+                            if (_this.isRandom) {
                                 _this.randomSong()
                                 forward_song()
                             } else {
@@ -1002,9 +621,9 @@ const app = {
                         }
                     })
 
-                    prev.forEach(function(e) {
-                        e.onclick = function() {
-                            if(_this.isRandom) {
+                    prev.forEach(function (e) {
+                        e.onclick = function () {
+                            if (_this.isRandom) {
                                 _this.randomSong()
                                 prev_song()
                             } else {
@@ -1017,11 +636,11 @@ const app = {
                     })
 
                     // Click songs in RESULT
-                    result_found_listSongs.onclick = function(element) {
+                    result_found_listSongs.onclick = function (element) {
                         const songNode = element.target.closest('.song:not(.active)')
-                        if(songNode) {
+                        if (songNode) {
                             // Xử lý click vào bài hát
-                            if(songNode) {
+                            if (songNode) {
                                 _this.songs = array_temporary
                                 _this.currentIndex = Number(songNode.dataset.index)
                                 _this.loadCurrentSong()
@@ -1033,11 +652,11 @@ const app = {
                         }
                     }
 
-                    overlay_listSongs.onclick = function(element) {
+                    overlay_listSongs.onclick = function (element) {
                         const songNode = element.target.closest('.song:not(.active)')
-                        if(songNode) {
+                        if (songNode) {
                             // Xử lý click vào bài hát
-                            if(songNode) {
+                            if (songNode) {
                                 _this.songs = array_temporary
                                 _this.currentIndex = Number(songNode.dataset.index)
                                 _this.loadCurrentSong()
@@ -1048,19 +667,19 @@ const app = {
 
                         }
                     }
-                    
+
                 } else {
                     result_not_found_text.innerHTML = `Results for "${side_input.value}"`
-                    
+
                     result_found.classList.add('display_none')
                     result_not_found.classList.remove('display_none')
                 }
 
-                
+
                 _this.songs = _this.songSort_default
 
-                side_content_item.forEach(function(item) {
-                    item.addEventListener('click', function() {
+                side_content_item.forEach(function (item) {
+                    item.addEventListener('click', function () {
                         _this.currentIndex = Math.floor(Math.random() * app.songs.length)
                         _this.songs = _this.songSort_default
                         options.value = "default"
@@ -1071,46 +690,46 @@ const app = {
                 side_input.value = ""
             }
         }
-
+        //test
 
         // =======================================Not update yet=======================================
         const authorIcons_play = take_all('.listSongs_authors_content_icons--play')
         const authorIcons_plus = take_all('.listSongs_authors_content_icons--plus')
-        authorIcons_play.forEach(function(e) {
-            e.onclick = function() {
+        authorIcons_play.forEach(function (e) {
+            e.onclick = function () {
                 toast({})
             }
         })
-        authorIcons_plus.forEach(function(e) {
-            e.onclick = function() {
+        authorIcons_plus.forEach(function (e) {
+            e.onclick = function () {
                 toast({})
             }
         })
 
         const albumIcons_play = take_all('.listSongs_albums_content_icons--play')
         const albumIcons_plus = take_all('.listSongs_albums_content_icons--plus')
-        albumIcons_play.forEach(function(e) {
-            e.onclick = function() {
+        albumIcons_play.forEach(function (e) {
+            e.onclick = function () {
                 toast({})
             }
         })
-        albumIcons_plus.forEach(function(e) {
-            e.onclick = function() {
+        albumIcons_plus.forEach(function (e) {
+            e.onclick = function () {
                 toast({})
             }
         })
 
         const more = take_one('.more')
-        more.onclick = function() {
-            toast({})
+        more.onclick = function () {
+            // toast({})
         }
     },
 
     // Hành vi scroll khi nhảy bài hát mới
-    scrollToActiveSong: function() {
-        setTimeout(function() {
+    scrollToActiveSong: function () {
+        setTimeout(function () {
             var songActive = take_all('.song.active')
-            for(var i = 0; i < songActive.length; i++) {
+            for (var i = 0; i < songActive.length; i++) {
                 // web API
                 songActive[i].scrollIntoView({
                     behavior: 'smooth',
@@ -1120,30 +739,30 @@ const app = {
         }, 300)
     },
 
-    loadCurrentSong: function() { 
-    
+    loadCurrentSong: function () {
+
         // Current Info in Footer
         info_name.textContent = this.currentSong.name
-        info_author.textContent = this.currentSong.author
-        info_image.src = this.currentSong.imgLink 
-        
+        info_author.textContent = this.currentSong.artist
+        info_image.src = this.currentSong.imgLink
+
         // Current Info in Overlay
-        overlay_space_img.src = this.currentSong.imgLink 
+        overlay_space_img.src = this.currentSong.imgLink
         overlay_info_name.textContent = this.currentSong.name
-        overlay_info_details.textContent = `${this.currentSong.author} • ${this.currentSong.album}`
-        overlay_info_img.src = this.currentSong.imgLink  
+        overlay_info_details.textContent = `${this.currentSong.artist} • ${this.currentSong.album}`
+        overlay_info_img.src = this.currentSong.imgLink
 
         // Current audio
         audio.src = this.currentSong.songLink;
 
         // Song.active - Stupid
-        listSongs_songs_main.forEach(function(e) {
+        listSongs_songs_main.forEach(function (e) {
             const songs = e.querySelectorAll('.song')
             const songs_audio = e.querySelectorAll('.song audio')
             const songs_active = e.querySelectorAll('.song.active')
-            songs.forEach(function(song, index) {
-                if(songs_audio[index].src == audio.src) {
-                    songs_active.forEach(function(song_active) {
+            songs.forEach(function (song, index) {
+                if (songs_audio[index].src == audio.src) {
+                    songs_active.forEach(function (song_active) {
                         song_active.classList.remove('active')
                     })
                     song.classList.add('active')
@@ -1152,68 +771,30 @@ const app = {
         })
     },
 
-    // Lấy ra toàn bộ thời gian của tất cả bài hát
-    load_duration_songs: function() {
-        // var arrayDurations = []
-        var newArray_songs = []
-        for(var i = 0; i < this.songs.length; i++) {
-            newArray_songs.push(this.songs[i])
-        }
-        // loading all the src songs
-        var htmls = newArray_songs.map(function(e,index) {
-            return `
-                <audio class="listAudio_item" th:src="@{${e.songLink}}"></audio>
-            `
-        })
-        listAudio.innerHTML = htmls.join('')
-
-        var listAudio_item = take_all('.listAudio .listAudio_item')
-
-        var audio_songs = take_all('.song audio')
-        var songs_time_1 = take_all('.listSongs_songs .song .song_time')
-        var songs_time_2 = take_all('.overlay_listSongs_songs .song .song_time')
-        var songs_time_3 = take_all('.result_found_listSongs .song .song_time')
-        
-        for(let i = 0; i < listAudio_item.length; i++) {
-            listAudio_item[i].addEventListener('loadedmetadata', function() {
-                var duration = Math.floor(listAudio_item[i].duration)
-                var minutes = Math.floor(duration / 60)
-                var seconds = Math.floor(duration % 60)
-
-                if(listAudio_item[i].src == audio_songs[i].src) {
-                    songs_time_1[i].textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
-                    songs_time_2[i].textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
-                    songs_time_3[i].textContent = `${minutes}:${seconds >= 10 ? seconds: "0"+seconds}`
-                }
-                
-            })
-        }
-    },
-
     // nextSong: next song thì load lại dữ liệu của bài hát mới
-    nextSong: function() {
+    nextSong: function () {
         this.currentIndex++
-        if(this.currentIndex >= this.songs.length) {
+        if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0
         }
         this.loadCurrentSong()
     },
     // prevSong: prev song thì load lại dữ liệu của bài hát mới
-    prevSong: function() {
+    prevSong: function () {
         this.currentIndex--
-        if(this.currentIndex < 0) {
+        if (this.currentIndex < 0) {
             this.currentIndex = this.songs.length - 1
         }
         this.loadCurrentSong()
     },
 
     // randomSong
-    randomSong: function() {
+    randomSong: function () {
         let newIndex
         do {
             // Ngẫu nhiên 1 bài hát trong danh sách
             newIndex = Math.floor(Math.random() * this.songs.length)
-        } while(newIndex == this.currentIndex)
+        } while (newIndex == this.currentIndex)
 
         this.currentIndex = newIndex
         this.loadCurrentSong()
@@ -1222,12 +803,12 @@ const app = {
 
 
     // randomPlay || stupid
-    randomPlay: function() {
+    randomPlay: function () {
         var newIndex_random
         do {
             // Ngẫu nhiên 1 bài hát trong danh sách
             newIndex_random = Math.floor(Math.random() * this.songs.length)
-        } while(newIndex_random == this.currentIndex)
+        } while (newIndex_random == this.currentIndex)
 
         this.currentIndex = newIndex_random
         this.loadCurrentSong()
@@ -1236,42 +817,36 @@ const app = {
         this.isRandom = true
         this.isLoop = false
         // Đối số thứ 2 của toggle là lấy giá trị boolean để kiếm tra
-        for(var i = 0; i < random.length; i++) {
+        for (var i = 0; i < random.length; i++) {
             random[i].classList.toggle('active', this.isRandom)
         }
-        for(var i = 0; i < loop.length; i++) {
+        for (var i = 0; i < loop.length; i++) {
             loop[i].classList.remove('active', this.isLoop)
         }
     },
 
-    
-    start: function() {
+
+    start: function () {
         // backup list songs
         this.backup_songs()
 
         // Render authors
         this.render_authors()
-        // Render albums
-        this.render_albums()
 
         // Render playlist
         this.render();
         // this.load_duration_songs()
-        this.load_duration_songs()
 
         // Định nghĩa các thuộc tính cho Object
         // NOW: Lấy ra các giá trị của bài hát hiện tại 
         this.defineProperties();
-        
+
         // Lắng nghe các sự kiện (DOM Events)
         this.handleEvents();
-        
+
         // Tải thông tin bài hát vào giao diện
         this.loadCurrentSong();
-        
-        
     }
-    
 }
 app.start();
 
