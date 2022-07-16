@@ -1,0 +1,240 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Login/Register</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/css/all.min.css}">
+    <style>
+        body {
+            background: #f1f2f7 url('https://wallpaperaccess.com/full/667771.jpg');
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .login-form {
+            width: 400px;
+            margin: 60px auto;
+            font-size: 15px;
+        }
+
+        .login-form:hover {
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .login-form form {
+            border-radius: 30px;
+            margin-bottom: 15px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+        .form-control, .btn {
+            min-height: 38px;
+        }
+
+        .login-btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .or-seperator {
+            margin: 20px 0 10px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        .or-seperator span {
+            font-weight: 500;
+            padding: 0 10px;
+            background: #f7f7f7;
+            position: relative;
+            top: -11px;
+            z-index: 1;
+        }
+
+        .social-button {
+            background-position: 25px 0px;
+            box-sizing: border-box;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            display: inline-block;
+            height: 50px;
+            line-height: 50px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            vertical-align: middle;
+            width: 100%;
+            border-radius: 3px;
+            margin: 10px auto;
+            outline: rgb(255, 255, 255) none 0px;
+            padding-left: 20%;
+            transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+        }
+
+        #facebook-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            border: 1px solid rgb(60, 90, 154);
+        }
+
+        #facebook-connect:hover {
+            border-color: rgb(60, 90, 154);
+            background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            -webkit-transition: all .8s ease-out;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease-out;
+        }
+
+        #facebook-connect span {
+            margin-left: 27px;
+            box-sizing: border-box;
+            color: rgb(60, 90, 154);
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(255, 255, 255);
+            outline: rgb(255, 255, 255) none 0px;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        #facebook-connect:hover span {
+            color: #FFF;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        #google-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+            border: 1px solid rgb(220, 74, 61);
+        }
+
+        #google-connect:hover {
+            border-color: rgb(220, 74, 61);
+            background: rgb(220, 74, 61) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+            -webkit-transition: all .8s ease-out;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease-out;
+        }
+
+        #google-connect span {
+            margin-left: 34px;
+            box-sizing: border-box;
+            color: rgb(220, 74, 61);
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(220, 74, 61);
+            outline: rgb(255, 255, 255) none 0px;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        #google-connect:hover span {
+            color: #FFF;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="login-form justify-content-start">
+    <form th:action="@{/login}" method="post" style="width: 100%">
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            <span>Invalid Credentials</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-success" role="alert" th:if="${success}">
+            <span th:text="${success}"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <h3 class="text-center">Login to continue</h3>
+
+        <div><a th:href="@{/oauth2/authorization/facebook}" class="social-button" id="facebook-connect"><span>Login with Facebook</span></a>
+        </div>
+        <div><a th:href="@{/oauth2/authorization/google}" class="social-button" id="google-connect"><span>Login with Google</span></a>
+        </div>
+
+        <div class="or-seperator"><span>OR</span></div>
+
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </span>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="Username" id="username"
+                       required="required">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                </div>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                       required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark btn-block login-btn">Login</button>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 justify-content-start">
+                <a href="#" class="text-danger">Forgot Password?</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <a th:href="@{/signup}" class="text-dark">Sign Up</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

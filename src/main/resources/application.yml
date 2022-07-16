@@ -1,0 +1,42 @@
+server:
+  port: 8888
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xpotify
+    username: root
+    password: lovecan148
+
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: off
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 1032386297814-16cbeoo78e8l5fbkuodqi8mdkt9a56ao.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 278795124416403
+            clientSecret: dda90f3692df9cbadd1fe14b9c6154b6
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    org.springframework.security: INFO
+    org.hibernate: ERROR
+    com.xpotify: DEBUG

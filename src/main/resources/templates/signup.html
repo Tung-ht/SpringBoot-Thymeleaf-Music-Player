@@ -1,0 +1,133 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Register</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/signup.css}">
+    <style>
+        body{
+            background: #f1f2f7 url('https://wallpaperaccess.com/full/667771.jpg');
+        }
+        .login-form {
+            width: 400px;
+            margin: 60px auto;
+            font-size: 15px;
+        }
+
+        .login-form form {
+            border-radius: 30px;
+            margin-bottom: 15px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+        .login-form .hint-text {
+            color: #777;
+            padding-bottom: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .login-btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .social-btn .btn {
+            margin: 10px 0;
+            font-size: 15px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .social-btn .btn i {
+            margin: 4px 15px 0 5px;
+            min-width: 15px;
+        }
+
+        .input-group-addon .fa {
+            font-size: 18px;
+        }
+        form{
+            width: 100%
+        }
+    </style>
+</head>
+<body>
+<div class="login-form">
+    <form th:action="@{/signup}" method="post" th:object="${signUpRequest}">
+        <h3 class="text-center">Sign Up</h3>
+
+        <div class="alert alert-danger" role="alert" th:if="${error}">
+            <span th:text="${error}"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </span>
+                </div>
+                <input type="text" class="form-control" th:field="*{name}" placeholder="Name" id="name" required="required">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <span class="fa fa-envelope"></span>
+                        </span>
+                </div>
+                <input type="email" class="form-control" th:field="*{email}" placeholder="email" id="email" required="required">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                </div>
+                <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password" required="required">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-dark btn-block login-btn" value="Sign Up" />
+        </div>
+        <hr>
+        <div class="text-center">
+            <span class="hint-text">Have an account?&nbsp;</span> <a th:href="@{/login}" class="text-dark">Sign In</a>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
