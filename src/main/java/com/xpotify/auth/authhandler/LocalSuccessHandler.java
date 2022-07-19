@@ -19,7 +19,11 @@ public class LocalSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException, ServletException {
         log.info("LocalSuccessHandler :: onAuthenticationSuccess :: start");
         log.info("Logged in user =>" + authentication.getPrincipal().toString());
-        getRedirectStrategy().sendRedirect(request, response, "/home");
+        if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))){
+            getRedirectStrategy().sendRedirect(request, response, "/home/");
+        } else
+            getRedirectStrategy().sendRedirect(request, response, "/admin/");
+
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

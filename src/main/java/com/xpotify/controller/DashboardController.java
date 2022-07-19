@@ -1,26 +1,96 @@
 package com.xpotify.controller;
 
-import com.xpotify.entity.User;
+import com.xpotify.entity.Song;
+import com.xpotify.service.SongService;
+import com.xpotify.utils.FileUploadUtil;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+import java.io.IOException;
+import java.util.List;
+
 @Secured("ROLE_ADMIN")
+@Controller
 @RequestMapping("/admin")
 @Log4j2
 public class DashboardController {
 
-    @GetMapping
-    public String test(Model model, @AuthenticationPrincipal User user) {
-        // In form-based login flow you get UserDetails as principal while in Oauth based flow you get Oauth2User
-        log.info("admin.getUsername() =>" + user.getUsername());
+    @Autowired
+    SongService songService;
 
-        model.addAttribute("name", user.getName());
-        return "home";
+    @GetMapping("/")
+    public String adminLogin(Model model) {
+        // show table mode
+        model.addAttribute("dashboard", 1);
+        model.addAttribute("songs", songService.getAll());
+        return "dashboard";
+    }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam("param") String param, Model model) {
+        List<Song> songs = songService.searchSong(param);
+        model.addAttribute("dashboard", 1);
+        model.addAttribute("songs", songs);
+        return "dashboard";
+    }
+
+    @GetMapping("/add-new-song")
+    public String openAddForm(Model model) {
+        // show add form mode
+        model.addAttribute("addForm", 1);
+        return "dashboard";
+    }
+
+    @PostMapping("/add-new-song")
+    public RedirectView addNewSong(@RequestParam("name") String name,
+                             @RequestParam("artist") String artist,
+                             @RequestParam("audio") MultipartFile audio,
+                             @RequestParam("avatar") MultipartFile avatar,
+                             RedirectAttributes redirectAttributes) throws IOException {
+
+        Song newSong = new Song();
+        newSong.setName(name);
+        newSong.setArtist(artist);
+        newSong.setStatus(1);
+
+        String audioFileName = StringUtils.cleanPath(audio.getOriginalFilename());
+        String avatarFileName = StringUtils.cleanPath(avatar.getOriginalFilename());
+
+        String uploadDir = "xpotify-data/" + newSong.getName();
+
+        String audioLink = FileUploadUtil.saveFile(uploadDir, audioFileName, audio);
+        String avatarLink = FileUploadUtil.saveFile(uploadDir, avatarFileName, avatar);
+
+        newSong.setSongLink(audioLink);
+        newSong.setImgLink(avatarLink);
+        log.debug("Song: " + newSong.getName() + " => AudioLink vs AvatarLink: "
+                + newSong.getSongLink() + "||" + newSong.getImgLink());
+
+        songService.addSong(newSong);
+        redirectAttributes.addFlashAttribute("uploadMsg", "Add new song successfully!");
+
+        return new RedirectView("/admin/add-new-song");
+    }
+
+    @GetMapping("/activate")
+    public String activateSong(@RequestParam("songId") Long songId, Model model) {
+        songService.activateSong(songId);
+        model.addAttribute("dashboard", 1);
+        return "forward:/admin/";
+    }
+
+    @GetMapping("/deactivate")
+    public String deactivateSong(@RequestParam("songId") Long songId, Model model) {
+        songService.deactivateSong(songId);
+        model.addAttribute("dashboard", 1);
+        return "forward:/admin/";
     }
 }

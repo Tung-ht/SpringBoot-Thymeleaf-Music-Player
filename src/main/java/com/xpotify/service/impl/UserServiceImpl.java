@@ -1,5 +1,6 @@
 package com.xpotify.service.impl;
 
+import com.xpotify.entity.Song;
 import com.xpotify.repo.UserRepository;
 import com.xpotify.entity.User;
 import com.xpotify.service.UserService;
@@ -21,5 +22,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public void addSongToFav(Song song) {
+
+    }
+
+    @Override
+    public void removeSongFromFav(Song song) {
+
     }
 }

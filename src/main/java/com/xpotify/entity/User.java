@@ -9,27 +9,30 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Data
 @Entity
+@Table(name = "user")
 public class User implements UserDetails, OAuth2User {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Column
+    private Long id;
+    private String username; // for admin
     private String email;
-    @Column
     private String name;
-    @Column
     private String password;
-
-    @Column
     private String authProvider;
-
-    @Column
     private String providerId;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_fav_song",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id"))
+    private List<Song> favSongs;
 
     @Transient
     private Map<String, Object> attributes;

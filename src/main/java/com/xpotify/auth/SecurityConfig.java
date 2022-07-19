@@ -37,13 +37,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        PasswordEncoder bCrypt = passwordEncoder();
         auth
                 .userDetailsService(localUserDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .passwordEncoder(bCrypt);
 
-        auth.inMemoryAuthentication().withUser("admin1").password("1").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("admin2").password("2").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("admin3").password("2").roles("ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser("admin1").password(bCrypt.encode("1")).roles("ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser("admin2").password(bCrypt.encode("2")).roles("ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser("admin3").password(bCrypt.encode("3")).roles("ADMIN");
     }
 
     @Bean
@@ -56,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/signup", "/webjars/**", "/assets/**", "/test")
+                .antMatchers("/login", "/signup", "/webjars/**", "/assets/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

@@ -10,6 +10,12 @@ spring:
     username: root
     password: lovecan148
 
+#file config
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 25MB
+
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
@@ -35,6 +41,9 @@ spring:
             clientSecret: dda90f3692df9cbadd1fe14b9c6154b6
 
 logging:
+  file.name: logs/xpotify-debug.log
+  pattern:
+    file: "%d [%t] %-5level %logger{36} - %msg%n"
   level:
     org.springframework.web: ERROR
     org.springframework.security: INFO

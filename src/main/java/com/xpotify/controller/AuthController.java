@@ -29,9 +29,11 @@ public class AuthController {
     public String viewLoginPage(Model model, @AuthenticationPrincipal User user) {
         if (user == null) {
             return "login";
-        } else {
+        } else if (user.getAuthorities().contains("ROLE_USER")){
             model.addAttribute("name", user.getName());
             return "home";
+        } else {
+            return "forward:/admin/";
         }
     }
 
