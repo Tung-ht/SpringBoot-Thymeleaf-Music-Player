@@ -15211,3 +15211,65 @@ Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving temp
 2022-07-20 11:32:37,155 [http-nio-8888-exec-8] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
 2022-07-20 11:32:37,159 [http-nio-8888-exec-8] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
 2022-07-20 11:32:37,160 [http-nio-8888-exec-8] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 11:58:25,620 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m7s493ms238µs800ns).
+2022-07-20 12:35:26,089 [http-nio-8888-exec-9] INFO  c.x.a.a.OAuthSuccessHandler - OAuthSuccessHandler :: onAuthenticationSuccess :: start
+2022-07-20 12:35:26,090 [http-nio-8888-exec-9] INFO  c.x.a.a.OAuthSuccessHandler - OAuthSuccessHandler :: onAuthenticationSuccess :: end
+2022-07-20 12:35:26,186 [http-nio-8888-exec-7] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:35:26,187 [http-nio-8888-exec-7] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:35:26,187 [http-nio-8888-exec-7] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:35:26,187 [http-nio-8888-exec-7] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 12:43:09,925 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:43:09,926 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:43:09,926 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:43:09,926 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 12:44:44,129 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:44:44,129 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:44:44,130 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:44:44,130 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 12:48:20,267 [SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-20 12:48:20,280 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2022-07-20 12:48:20,286 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-07-20 12:48:20,295 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-07-20 12:48:30,054 [restartedMain] INFO  com.xpotify.XpotifyApplication - Starting XpotifyApplication on Tungdz with PID 6028 (C:\Users\DaiPhongPC\OneDrive\Desktop\Xpotify\target\classes started by Tunght in C:\Users\DaiPhongPC\OneDrive\Desktop\Xpotify)
+2022-07-20 12:48:30,062 [restartedMain] DEBUG com.xpotify.XpotifyApplication - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2022-07-20 12:48:30,063 [restartedMain] INFO  com.xpotify.XpotifyApplication - No active profile set, falling back to default profiles: default
+2022-07-20 12:48:30,168 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-20 12:48:30,169 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-07-20 12:48:31,835 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-07-20 12:48:31,955 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105ms. Found 2 JPA repository interfaces.
+2022-07-20 12:48:32,565 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@b39af60' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-07-20 12:48:32,574 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-07-20 12:48:33,220 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2022-07-20 12:48:33,232 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-20 12:48:33,232 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-07-20 12:48:33,405 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-20 12:48:33,408 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3238 ms
+2022-07-20 12:48:33,693 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-20 12:48:34,403 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-07-20 12:48:34,834 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f72cecf, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d1be02c, org.springframework.security.web.header.HeaderWriterFilter@69d3157e, org.springframework.security.web.authentication.logout.LogoutFilter@637a208a, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@5687963d, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@5dd6a1b4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2f4d676b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c8266ee, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@edc511d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3eb5d5a7, org.springframework.security.web.session.SessionManagementFilter@736053d4, org.springframework.security.web.access.ExceptionTranslationFilter@187ca348, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6b004bf]
+2022-07-20 12:48:35,014 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-07-20 12:48:36,572 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-07-20 12:48:36,638 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2022-07-20 12:48:36,642 [restartedMain] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
+2022-07-20 12:48:36,955 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-20 12:48:37,663 [restartedMain] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
+2022-07-20 12:48:37,673 [restartedMain] INFO  com.xpotify.XpotifyApplication - Started XpotifyApplication in 8.761 seconds (JVM running for 11.258)
+2022-07-20 12:49:33,847 [http-nio-8888-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-20 12:49:33,915 [http-nio-8888-exec-1] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:49:33,916 [http-nio-8888-exec-1] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:49:33,916 [http-nio-8888-exec-1] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:49:33,916 [http-nio-8888-exec-1] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 12:56:33,036 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:56:33,037 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:56:33,037 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:56:33,038 [http-nio-8888-exec-3] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
+2022-07-20 12:56:40,989 [http-nio-8888-exec-1] INFO  c.x.a.a.LocalSuccessHandler - LocalSuccessHandler :: onAuthenticationSuccess :: start
+2022-07-20 12:56:40,989 [http-nio-8888-exec-1] INFO  c.x.a.a.LocalSuccessHandler - Logged in user =>org.springframework.security.core.userdetails.User@ab3a66c2: Username: admin1; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN
+2022-07-20 12:56:40,993 [http-nio-8888-exec-1] DEBUG c.x.a.a.LocalSuccessHandler - Using default Url: /
+2022-07-20 12:56:40,994 [http-nio-8888-exec-1] DEBUG c.x.a.a.LocalSuccessHandler - Response has already been committed. Unable to redirect to /
+2022-07-20 12:59:55,577 [http-nio-8888-exec-2] INFO  c.x.a.a.OAuthSuccessHandler - OAuthSuccessHandler :: onAuthenticationSuccess :: start
+2022-07-20 12:59:55,577 [http-nio-8888-exec-2] INFO  c.x.a.a.OAuthSuccessHandler - OAuthSuccessHandler :: onAuthenticationSuccess :: end
+2022-07-20 12:59:55,634 [http-nio-8888-exec-4] INFO  c.xpotify.controller.HomeController - user.getUsername() =>tungxtnd1@gmail.com
+2022-07-20 12:59:55,634 [http-nio-8888-exec-4] INFO  c.xpotify.controller.HomeController - user.getEmail() =>tungxtnd1@gmail.com
+2022-07-20 12:59:55,635 [http-nio-8888-exec-4] INFO  c.xpotify.controller.HomeController - user.getAuthProvider() =>google
+2022-07-20 12:59:55,635 [http-nio-8888-exec-4] INFO  c.xpotify.controller.HomeController - user.getProviderId() =>116350047590171348430
