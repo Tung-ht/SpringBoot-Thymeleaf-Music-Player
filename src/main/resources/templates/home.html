@@ -27,6 +27,7 @@
           th:href="@{/assets/image/logo_website.png}">
 
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/app_1-side.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/app_2-listSongs.css}">
@@ -92,8 +93,11 @@
     <div class="listSongs">
         <div style="display:flex; justify-content: space-between">
             <div class="listSongs_content ">All Songs</div>
-            <div style="display:flex; justify-content: space-around; width: 150px;">
-                <div>Hello <span th:text="${name}"></span></div>
+            <div style="width: 150px;">
+<!--                <div style="display:flex; justify-content: space-around; margin-right: 10px">-->
+                    <div style="margin-right: 2px">Hello</div>
+                    <span id="name-display" th:text="${name}"></span>
+<!--                </div>-->
                 <div>
                     <a class="btn btn btn-info" th:href="@{/logout}" role="button">Logout</a>
                 </div>
