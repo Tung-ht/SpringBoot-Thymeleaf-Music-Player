@@ -11,16 +11,6 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song, Long> {
 
-    List<Song> findAllByStatus(int status);
-
     @Query("SELECT s FROM Song s WHERE CONCAT(s.name, s.artist) LIKE %?1%")
     List<Song> searchSong(String param);
-
-    @Modifying
-    @Query("UPDATE Song SET status = 1 where id = ?1")
-    void activeSong(Long songId);
-
-    @Modifying
-    @Query("UPDATE Song SET status = 0 where id = ?1")
-    void deactiveSong(Long songId);
 }

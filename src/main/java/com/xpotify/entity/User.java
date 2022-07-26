@@ -29,10 +29,10 @@ public class User implements UserDetails, OAuth2User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_fav_song",
+            name = "user_purchased_song",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "song_id"))
-    private List<Song> favSongs;
+    private List<Song> purchasedSongs;
 
     @Transient
     private Map<String, Object> attributes;

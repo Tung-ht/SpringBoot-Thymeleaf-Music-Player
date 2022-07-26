@@ -3,6 +3,7 @@ package com.xpotify.controller;
 import com.xpotify.entity.Song;
 import com.xpotify.entity.User;
 import com.xpotify.service.SongService;
+import com.xpotify.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -20,6 +21,9 @@ public class HomeController {
     @Autowired
     SongService songService;
 
+    @Autowired
+    UserService userService;
+
     @Secured("ROLE_USER")
     @GetMapping({"/", "/home"})
     public String retrieveFormLoginInfo(Model model,
@@ -30,10 +34,9 @@ public class HomeController {
         log.info("user.getAuthProvider() =>" + user.getAuthProvider());
         log.info("user.getProviderId() =>" + user.getProviderId());
 
-        List<Song> songs = songService.getSongsForHomePage();
-
-//        Gson gson = new Gson();
-//        String songs = gson.toJson(listSongs);
+        List<Song> songs = songService.getAll();
+        List<Song> purchasedSongs = userService.getPurchasedSong(user.getId());
+        model.addAttribute("purchasedSongs", purchasedSongs);
         model.addAttribute("songs", songs);
         model.addAttribute("name", user.getName());
         return "home";

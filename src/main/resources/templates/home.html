@@ -40,7 +40,6 @@
     <script src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
 </head>
 <body>
-
 <!-- Ứng dụng nhạc -->
 <div id="app">
 
@@ -80,11 +79,7 @@
                 </div>
                 <p>Favorite songs</p>
             </div>
-            <div class="side_content-item currently_playing">
-                <div class="side_narbar-item">
-                    <i class="fas fa-play"></i>
-                </div>
-                <p>Playing</p>
+            <div class="list_purchase_songs display_none">
             </div>
         </div>
     </div>
@@ -94,10 +89,10 @@
         <div style="display:flex; justify-content: space-between">
             <div class="listSongs_content ">All Songs</div>
             <div style="width: 150px;">
-<!--                <div style="display:flex; justify-content: space-around; margin-right: 10px">-->
-                    <div style="margin-right: 2px">Hello</div>
-                    <span id="name-display" th:text="${name}"></span>
-<!--                </div>-->
+                <!--                <div style="display:flex; justify-content: space-around; margin-right: 10px">-->
+                <div style="margin-right: 2px">Hello</div>
+                <span id="name-display" th:text="${name}"></span>
+                <!--                </div>-->
                 <div>
                     <a class="btn btn btn-info" th:href="@{/logout}" role="button">Logout</a>
                 </div>
@@ -120,7 +115,7 @@
             <!-- Sort List -->
             <div class="sortList">
                 <label for="options">Sort:</label>
-                <select class="options" id="options" required>
+                <select id="options" required>
                     <option class="option_sort" value="default">Default</option>
                     <!-- <option class="option_sort" value="time">Ngày thêm</option> -->
                     <option class="option_sort" value="name">A - Z</option>
@@ -164,9 +159,6 @@
             <div id="listSongs_songs_main" class="result_found_listSongs listSongs_songs_main">
 
             </div>
-
-            <!-- <div id="listSongs_songs_main" class="listSongs_songs_main"></div> -->
-
         </div>
 
         <!-- Không tìm thấy bài hát -->
@@ -200,24 +192,22 @@
         <!-- Information the song -->
         <div class="information">
             <div class="image">
-                <img src="" alt="">
+                <img src="https://bitsofco.de/content/images/2018/12/broken-1.png" alt="">
             </div>
+            <div class="id-current-song"></div>
             <div class="info">
                 <!-- Text running -->
                 <marquee class="info_name"
                          behavior="slide"
                          scrollamount="4">
-                    Save Your Tears
                 </marquee>
                 <marquee class="info_author"
                          behavior="slide"
                          scrollamount="4">
-                    Nghệ sĩ không xác định
                 </marquee>
             </div>
         </div>
 
-        <!-- Controls footer -->
         <div class="controls">
             <div class="controls_options">
                 <div class="controls_btn random">
@@ -277,10 +267,6 @@
                 <i class="bi bi-three-dots"></i>
                 <!-- <i class="bi bi-three-dots-vertical"></i> -->
             </div>
-            <!-- <div class="blank">
-                <i class="bi bi-three-dots"></i>
-
-            </div> -->
         </div>
     </div>
     <!-- ==========ENDING: Footer==========-->
@@ -400,9 +386,7 @@
 
 </div>
 
-
 <div id="toast"></div>
-
 <!-- Disable Text Select -->
 <script th:inline="javascript">
     function disableselect(e) {
@@ -423,10 +407,10 @@
 <!--pass list songs first then external js file can read this songs-->
 <script th:inline="javascript">
     var songs = [[${songs}]];
+    var purchasedSongs = [[${purchasedSongs}]];
 </script>
 
 <script th:src="@{/assets/js/handle_Page.js}" type="text/javascript"></script>
 <script th:src="@{/assets/js/handle_Music.js}" type="text/javascript"></script>
-
 </body>
 </html>

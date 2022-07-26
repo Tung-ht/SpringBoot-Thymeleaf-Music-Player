@@ -2,7 +2,7 @@ package com.xpotify.controller;
 
 import com.xpotify.entity.Song;
 import com.xpotify.service.SongService;
-import com.xpotify.utils.FileUploadUtil;
+import com.xpotify.utils.FileUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -52,6 +52,7 @@ public class DashboardController {
     @PostMapping("/add-new-song")
     public RedirectView addNewSong(@RequestParam("name") String name,
                              @RequestParam("artist") String artist,
+                             @RequestParam("isPremium") int isPremium,
                              @RequestParam("audio") MultipartFile audio,
                              @RequestParam("avatar") MultipartFile avatar,
                              RedirectAttributes redirectAttributes) throws IOException {
@@ -59,15 +60,15 @@ public class DashboardController {
         Song newSong = new Song();
         newSong.setName(name);
         newSong.setArtist(artist);
-        newSong.setStatus(1);
+        newSong.setIsPremium(isPremium);
 
         String audioFileName = StringUtils.cleanPath(audio.getOriginalFilename());
         String avatarFileName = StringUtils.cleanPath(avatar.getOriginalFilename());
 
         String uploadDir = "xpotify-data/" + newSong.getName();
 
-        String audioLink = FileUploadUtil.saveFile(uploadDir, audioFileName, audio);
-        String avatarLink = FileUploadUtil.saveFile(uploadDir, avatarFileName, avatar);
+        String audioLink = FileUtils.saveFile(uploadDir, audioFileName, audio);
+        String avatarLink = FileUtils.saveFile(uploadDir, avatarFileName, avatar);
 
         newSong.setSongLink(audioLink);
         newSong.setImgLink(avatarLink);
@@ -80,17 +81,9 @@ public class DashboardController {
         return new RedirectView("/admin/add-new-song");
     }
 
-    @GetMapping("/activate")
-    public String activateSong(@RequestParam("songId") Long songId, Model model) {
-        songService.activateSong(songId);
-        model.addAttribute("dashboard", 1);
-        return "forward:/admin/";
-    }
-
-    @GetMapping("/deactivate")
-    public String deactivateSong(@RequestParam("songId") Long songId, Model model) {
-        songService.deactivateSong(songId);
-        model.addAttribute("dashboard", 1);
-        return "forward:/admin/";
+    @GetMapping("/delete")
+    public String deleteSong(@RequestParam("songId") Long songId, Model model) {
+        songService.deleteSong(songId);
+        return "redirect:/admin/";
     }
 }

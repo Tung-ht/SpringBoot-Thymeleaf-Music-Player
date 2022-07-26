@@ -20,12 +20,12 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private int status;
+    private int isPremium;
     private String artist;
     private String songLink;
     private String imgLink;
 
-    @ManyToMany(mappedBy = "favSongs", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "purchasedSongs", fetch = FetchType.EAGER)
     List<User> users;
 
     @Transient

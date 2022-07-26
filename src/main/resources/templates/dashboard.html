@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"-->
-<!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <style>
 
@@ -123,6 +121,13 @@
             <input type="text" name="artist" class="form-control" id="artist-name-upload" placeholder="Miên Tử" required>
         </div>
         <div class="form-group">
+            <p>Premium song or not:</p>
+            <input type="radio" id="yes" name="isPremium" value="1">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="isPremium" value="0">
+            <label for="no">No</label><br>
+        </div>
+        <div class="form-group">
             <label for="mp3-upload">Upload song (.mp3, ...)</label>
             <input type="file" name="audio" class="form-control-file" id="mp3-upload" accept="audio/*" required>
         </div>
@@ -145,7 +150,7 @@
             <th scope="col">Image</th>
             <th scope="col">Song</th>
             <th scope="col">Artist</th>
-            <th scope="col">Status</th>
+            <th scope="col">Is Premium</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -157,11 +162,10 @@
             </td>
             <td th:text="${song.name}"></td>
             <td th:text="${song.artist}"></td>
-            <td th:text="${song.status}"></td>
+            <td th:text="${song.isPremium}"></td>
             <td>
                 <div class="action">
-                    <a class="btn btn-light" th:href="@{/admin/activate(songId=${song.id})}" role="button">Activate</a>
-                    <a class="btn btn-dark" th:href="@{/admin/deactivate(songId=${song.id})}" role="button">Deactivate</a>
+                    <a class="btn btn-dark" th:href="@{/admin/delete(songId=${song.id})}" role="button">Delete</a>
                 </div>
             </td>
         </tr>

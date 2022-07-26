@@ -1,5 +1,6 @@
-// listSongs: Body & Overlay 
+// listSongs: Body & Overlay
 const listSongs_songs_main = take_all("#listSongs_songs_main");
+const list_purchase_song = take_one('.list_purchase_songs');
 
 // listSongs:
 const playRandom = take_one('.playRandom')
@@ -37,7 +38,7 @@ const time_progress = take_all('#time_progress'),
     time_current = take_all('.time_current'),
     time_total = take_all('.time_total')
 
-// Volume 
+// Volume
 const volume__range = take_all('.volume__range'),
     volumn_process_nav = take_all('.volumn_process_nav'),
     volumn_process_update = take_all('.volumn_process_update'),
@@ -45,7 +46,7 @@ const volume__range = take_all('.volume__range'),
     volume_up = take_all('.bi-volume-up'),
     volume_mute = take_all('.bi-volume-mute')
 
-// Btn controls: prev-forward && random-loop 
+// Btn controls: prev-forward && random-loop
 const prev = take_all('.prev')
 const forward = take_all('.forward')
 const random = take_all('.random')
@@ -73,6 +74,7 @@ const app = {
     songSort_author: [],
     songSort_album: [],
     songs: songs,
+    listPurchaseSong: purchasedSongs,
 
     backup_songs: function () {
         this.songSort_default = this.songs
@@ -186,13 +188,19 @@ const app = {
                     </div>
                 </div>
                 <div class="song_author">${song.artist}</div>
-                <div class='large-font text-center top-20 ${"icon-heart-" + song.id}'>
-                    <ion-icon name="heart">
-                    <div class='red-bg'></div>
-                    </ion-icon>
+                <div class='text-center w100 premium top-20'>
+                    ${song.isPremium ? "premium" : "       "}
                 </div>
                 <div class="song_time"></div>
                 <audio class="audio_inSong" th:src="@{${song.songLink}}"></audio>
+            </div>
+        `
+        })
+
+        const listPurchaseSongHtmls = this.listPurchaseSong.map(function (song, index) {
+            return `
+            <div class="purchase_song_item" data-index="${index}">
+                ${song.name}--${song.artist}
             </div>
         `
         })
@@ -202,6 +210,10 @@ const app = {
         listSongs_songs_main.forEach(function (list) {
             list.innerHTML = htmls.join("")
         })
+
+        console.log(45646574567, this.listPurchaseSong);
+
+        list_purchase_song.innerHTML = listPurchaseSongHtmls.join("")
     },
 
     // Xét cho object app thêm 1 thuộc tính là currentSong
@@ -279,7 +291,7 @@ const app = {
         // Tiến độ bài hát thay đổi - Time Update
         audio.ontimeupdate = function () {
             if (audio.duration) {
-                // If it's not moving 
+                // If it's not moving
                 if (isMoving == false) {
                     time_progress
                     const currentProgress = (audio.currentTime / audio.duration) * 100
@@ -288,7 +300,7 @@ const app = {
                         e_nav_update.style.width = currentProgress + '%'
                     })
 
-                    // change contentText 
+                    // change contentText
                     let minutes = Math.floor(audio.currentTime / 60)
                     let seconds = Math.floor(audio.currentTime % 60)
                     time_current.forEach(function (e) {
@@ -298,7 +310,7 @@ const app = {
 
             }
         }
-        // Xử lý khi hết bài hát 
+        // Xử lý khi hết bài hát
         // Sẽ phụ thuộc vào random & loop
         audio.onended = function () {
             if (_this.isLoop) {
@@ -340,7 +352,7 @@ const app = {
 
                     let minutes = Math.floor(seekTime / 60)
                     let seconds = Math.floor(seekTime % 60)
-                    // change contentText 
+                    // change contentText
                     time_current.forEach(function (e) {
                         e.textContent = `${minutes}:${seconds >= 10 ? seconds : "0" + seconds}`
                     })
@@ -428,7 +440,7 @@ const app = {
                 _this.scrollToActiveSong()
             }
         })
-        // Khi prev lùi bài hát 
+        // Khi prev lùi bài hát
         prev.forEach(function (e) {
             e.onclick = function () {
                 if (_this.isRandom) {
@@ -477,12 +489,18 @@ const app = {
 
                     // Xử lý click vào bài hát
                     if (songNode) {
+                        // console.log(1231231231234245245, listSong);
+                        if(songNode.querySelectorAll(".premium")[0].textContent.trim() === "premium") {
+                            if (confirm("Please purchase this song to listen!")){
+                                window.open("http://localhost:8888/payment", '_self');
+                            }
+                            return;
+                        };
                         // songNode.getAttribute('data-index') = songNode.dataset.index
                         // Dạng chuỗi <=> convert to number
                         _this.currentIndex = Number(songNode.dataset.index)
                         _this.loadCurrentSong()
                         audio.play()
-
                     }
 
                     // Xử lý click vào handing
@@ -690,7 +708,7 @@ const app = {
                 side_input.value = ""
             }
         }
-        //test
+
 
         // =======================================Not update yet=======================================
         const authorIcons_play = take_all('.listSongs_authors_content_icons--play')
@@ -749,7 +767,7 @@ const app = {
         // Current Info in Overlay
         overlay_space_img.src = this.currentSong.imgLink
         overlay_info_name.textContent = this.currentSong.name
-        overlay_info_details.textContent = `${this.currentSong.artist} • ${this.currentSong.album}`
+        // overlay_info_details.textContent = `${this.currentSong.artist} • ${this.currentSong.album}`
         overlay_info_img.src = this.currentSong.imgLink
 
         // Current audio
@@ -838,7 +856,7 @@ const app = {
         // this.load_duration_songs()
 
         // Định nghĩa các thuộc tính cho Object
-        // NOW: Lấy ra các giá trị của bài hát hiện tại 
+        // NOW: Lấy ra các giá trị của bài hát hiện tại
         this.defineProperties();
 
         // Lắng nghe các sự kiện (DOM Events)
@@ -849,4 +867,3 @@ const app = {
     }
 }
 app.start();
-

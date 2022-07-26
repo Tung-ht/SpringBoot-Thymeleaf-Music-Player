@@ -38,9 +38,11 @@ public class AuthController {
         if (user == null) {
             return "login";
         } else if (user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))){
-            List<Song> songs = songService.getSongsForHomePage();
-            model.addAttribute("name", user.getName());
+            List<Song> songs = songService.getAll();
+            List<Song> purchasedSongs = userService.getPurchasedSong(user.getId());
+            model.addAttribute("purchasedSongs", purchasedSongs);
             model.addAttribute("songs", songs);
+            model.addAttribute("name", user.getName());
             return "home";
         } else {
             return "forward:/admin/";
@@ -53,7 +55,9 @@ public class AuthController {
             model.addAttribute("signUpRequest", new SignUpRequest());
             return "signup";
         } else if (user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))){
-            List<Song> songs = songService.getSongsForHomePage();
+            List<Song> songs = songService.getAll();
+            List<Song> purchasedSongs = userService.getPurchasedSong(user.getId());
+            model.addAttribute("purchasedSongs", purchasedSongs);
             model.addAttribute("name", user.getName());
             model.addAttribute("songs", songs);
             return "home";

@@ -11,7 +11,7 @@
 :root {
     --white: #fff;
     --text: rgb(231, 231, 231);
-    --text-title: #888; 
+    --text-title: #888;
     --background: black;
     --background-blu: rgb(41, 41, 41);
     --background-search: rgb(70, 70, 70);
@@ -54,36 +54,55 @@ body {
 
 .large-font{
     font-size:xxx-large;
-  }
-  /* .top-20{
-    position:relative;
-    top:20vh;
-  } */
-  ion-icon.active{
+}
+/* .top-20{
+  position:relative;
+  top:20vh;
+} */
+ion-icon.active{
     animation:like 0.5s 1;
     fill:red;
     stroke:none;
-  }
-  ion-icon{
+}
+ion-icon{
     width: 40px;
     fill:transparent;
     stroke:red;
     stroke-width:30;
     transition:all 0.5s;
-  }
-  
-  
-  @-webkit-keyframes like {
+}
+.id-current-song {
+    display: none;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.list_purchase_songs {
+    padding: 0 40px;
+}
+
+.purchase_song_item {
+    margin-bottom: 5px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@-webkit-keyframes like {
     0%   { transform: scale(1); }
     90%   { transform: scale(1.2); }
     100% { transform: scale(1.1); }
-  }
+}
 
-  .song_image {
+.song_image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-  }
+}
 
 
 /* common */
@@ -126,7 +145,7 @@ body {
     min-height: 100px;
     padding: 0px 0;
 
-    animation: slide_in_left linear .3s, 
+    animation: slide_in_left linear .3s,
     fadeOut linear 1s 3s forwards;
 
     transition: all linear .3s;
@@ -137,9 +156,9 @@ body {
         transform: translateX(calc(100% + 10px));
         opacity: 0;
     } to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+          transform: translateX(0);
+          opacity: 1;
+      }
 }
 
 @keyframes fadeOut {
@@ -160,7 +179,7 @@ body {
     color: var(--logo);
 }
 
-.toast_close, 
+.toast_close,
 .toast_icon {
     padding: 0 16px;
 }

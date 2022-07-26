@@ -3,8 +3,10 @@ package com.xpotify.service.impl;
 import com.xpotify.entity.Song;
 import com.xpotify.repo.SongRepository;
 import com.xpotify.service.SongService;
+import com.xpotify.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 
@@ -13,11 +15,6 @@ public class SongServiceImpl implements SongService {
 
     @Autowired
     SongRepository songRepository;
-
-    @Override
-    public List<Song> getSongsForHomePage() {
-        return songRepository.findAllByStatus(1);
-    }
 
     @Override
     public void addSong(Song song) {
@@ -35,16 +32,13 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public void activateSong(Long songId) {
-        Song song = songRepository.findById(songId).get();
-        song.setStatus(1);
-        songRepository.save(song);
-    }
-
-    @Override
-    public void deactivateSong(Long songId) {
-        Song song = songRepository.findById(songId).get();
-        song.setStatus(0);
-        songRepository.save(song);
+    public void deleteSong(Long songId) {
+        Song song = songRepository.findById(songId).
+                orElseThrow(() -> new NotFoundException("Song not found!"));
+        String songLink = song.getSongLink();
+        String imgLink = song.getImgLink();
+        FileUtils.deleteFile(songLink);
+        FileUtils.deleteFile(imgLink);
+        songRepository.delete(song);
     }
 }

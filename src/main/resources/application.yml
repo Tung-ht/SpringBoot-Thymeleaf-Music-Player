@@ -40,6 +40,12 @@ spring:
             clientId: 278795124416403
             clientSecret: dda90f3692df9cbadd1fe14b9c6154b6
 
+paypal:
+  mode: sandbox
+  client:
+    id: AVGLJsptYsH2DFxUkYMiVNIbnwFuZPXvmfB_LoyTkF3HwDSX4pN8CS0quA7O2qoR1loJGc5tZsbQ3Zcf
+    secret: EG5hrjE8yCh_1CpumrO2Zdegiz_QyzC1Z01U72GNBCz45jc22XRkOdEaA7tb_FYCeuejb1h5WNx5tyOP
+
 logging:
   file.name: logs/xpotify-debug.log
   pattern:
@@ -49,3 +55,4 @@ logging:
     org.springframework.security: INFO
     org.hibernate: ERROR
     com.xpotify: DEBUG
+

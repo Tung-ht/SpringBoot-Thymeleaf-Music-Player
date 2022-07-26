@@ -1,1 +1,0 @@
-alert(songs[0].name)

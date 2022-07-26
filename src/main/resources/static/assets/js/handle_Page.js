@@ -1,23 +1,23 @@
-// Bind 
+// Bind
 const take_one = document.querySelector.bind(document);
 const take_all = document.querySelectorAll.bind(document);
 
 
-// 1.Slide 
+// 1.Slide
 const side_narbar_menu = take_one('.side_narbar-item_menu'),
-side = take_one('.side'), 
-side_logo = take_one('.side_logo'),
-search_bar = take_one('.side_search-bar'),
-search_input = take_one('.side_search-bar input'),
-search_btn = take_one('.side_narbar-item .fa-search'),
-side_content = take_one('.side_content'),
-side_content_item = take_all('.side_content-item'),
-side_content_text = take_all('.side_content p'),
-my_music = take_one('.my_music'),
-recent_content = take_one('.recent_content'),
-currently_playing = take_one('.currently_playing');
+    side = take_one('.side'),
+    side_logo = take_one('.side_logo'),
+    search_bar = take_one('.side_search-bar'),
+    search_input = take_one('.side_search-bar input'),
+    search_btn = take_one('.side_narbar-item .fa-search'),
+    side_content = take_one('.side_content'),
+    side_content_item = take_all('.side_content-item'),
+    side_content_text = take_all('.side_content p'),
+    my_music = take_one('.my_music'),
+    recent_content = take_one('.recent_content'),
+    currently_playing = take_one('.currently_playing');
 
-// 2.listSongs 
+// 2.listSongs
 const listSongs = take_one('.listSongs')
 const listSongs_menu_item = take_all('.listSongs_menu_item')
 
@@ -31,15 +31,15 @@ const info_author = take_one('.info_author');
 
 // 4.overlay
 const overlay = take_one('#overlay'),
-overlay_volume = take_one('.overlay_volume i'),
-overlay_volume_detail = take_one('#overlay .volumn_details'),
-overlay_btn = take_one('.overlay_btn'),
-overlay_space = take_one('.overlay_space'),
-overlay_listSongs_icon = take_one('.overlay_listSongs_icon'),
-overlay_listSongs_songs = take_one('.overlay_listSongs_songs')
+    overlay_volume = take_one('.overlay_volume i'),
+    overlay_volume_detail = take_one('#overlay .volumn_details'),
+    overlay_btn = take_one('.overlay_btn'),
+    overlay_space = take_one('.overlay_space'),
+    overlay_listSongs_icon = take_one('.overlay_listSongs_icon'),
+    overlay_listSongs_songs = take_one('.overlay_listSongs_songs')
 
 
-// =====FUNCTION===== 
+// =====FUNCTION=====
 // 1.Side
 function compress_side() {
     var windowWidth = $(document).width();
@@ -74,7 +74,7 @@ function expand_side() {
             height: 'unset'
         });
     }
-    side.style.zIndex = 99999 
+    side.style.zIndex = 99999
     side.style.width = 280+'px'
     side_logo.style.display = 'flex'
     search_bar.style.padding = '7px 16px'
@@ -149,7 +149,7 @@ side_narbar_menu.onclick = function() {
             side_content_text.forEach(function(e) {
                 e.classList.add('changed_expand')
             })
-            
+
         } else {
             expand_side();
         }
@@ -174,7 +174,7 @@ my_music.onclick = function() {
     }
     my_music.classList.add('active')
     var windowWidth = $(document).width();
-    
+
     if(windowWidth <= 768) {
         side_overlay.classList.add('display_none')
         search_bar.classList.remove('side_content_changed')
@@ -201,7 +201,7 @@ my_music.onclick = function() {
     } else if(windowWidth > 768 && windowWidth <= 1020) {
         compress_side();
         check = true;
-    }    
+    }
 }
 
 recent_content.onclick = function() {
@@ -237,18 +237,19 @@ recent_content.onclick = function() {
     } else if(windowWidth > 768 && windowWidth <= 1020) {
         compress_side();
         check = true;
-    }      
-    toast({
-        notify: "Notification",
-        title: "This function is being developed... Sorry ಥ_ಥ",
-        type: "main",
-        duration: 2000
-    })
+    }
+    list_purchase_song.classList.toggle("display_none");
+    // toast({
+    //     notify: "Notification",
+    //     title: "This function is being developed... Sorry ಥ_ಥ",
+    //     type: "main",
+    //     duration: 2000
+    // })
 }
 
 currently_playing.onclick = function() {
     setTimeout(openOverlay(), 300)
-    
+
     var item_active = take_one('.side_content-item.active')
     if(item_active) {
         item_active.classList.remove('active')
@@ -281,7 +282,7 @@ currently_playing.onclick = function() {
     } else if(windowWidth > 768 && windowWidth <= 1020) {
         compress_side();
         check = true;
-    }   
+    }
 }
 
 
@@ -400,13 +401,13 @@ window.addEventListener('resize', function() {
 })
 
 
-// 3.Loading page for FOOTER 
+// 3.Loading page for FOOTER
 window.addEventListener('DOMContentLoaded', function() {
     var windowWidth = $(document).width();
     if(windowWidth <= 700) {
         info_name.behavior = 'scroll';
         info_name.start()
-        
+
         info_name.scrollAmount = "3"
         info_author.scrollAmount = "3"
     }
@@ -415,8 +416,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 // TOAST MESSAGE
-function toast({notify = 'Thông báo', title = 'Tính năng này chưa được cập nhật... sr ಥ_ಥ', 
-type = 'main', duration = 2000}) {
+function toast({notify = 'Thông báo', title = 'Tính năng này chưa được cập nhật... sr ಥ_ಥ',
+                   type = 'main', duration = 2000}) {
     const main = take_one('#toast')
     if(main) {
         const toast = document.createElement('div')
