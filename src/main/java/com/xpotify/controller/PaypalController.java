@@ -3,9 +3,11 @@ package com.xpotify.controller;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+import com.xpotify.entity.Song;
 import com.xpotify.entity.User;
 import com.xpotify.enums.PaypalPaymentIntent;
 import com.xpotify.enums.PaypalPaymentMethod;
+import com.xpotify.service.SongService;
 import com.xpotify.service.UserService;
 import com.xpotify.service.impl.PaypalService;
 import com.xpotify.utils.PaypalUtils;
@@ -36,9 +38,13 @@ public class PaypalController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SongService songService;
+
     @GetMapping("/payment")
     public String showPaymentPage(@RequestParam("songId") Long songId, Model model) {
-        model.addAttribute("purchasedSongId", songId);
+        Song purchasedSong = songService.getById(songId);
+        model.addAttribute("purchasedSong", purchasedSong);
         return "payment";
     }
 

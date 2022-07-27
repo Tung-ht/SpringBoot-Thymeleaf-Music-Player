@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface SongService {
 
+    Song getById(Long id);
+
     List<Song> getAll();
 
     void addSong(Song song);

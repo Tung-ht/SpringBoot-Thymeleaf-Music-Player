@@ -129,7 +129,7 @@
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form method="post" th:action="@{/pay(songId=${purchasedSongId})}">
+            <form method="post" th:action="@{/pay(songId=${purchasedSong.id})}">
                 <div class="col-50">
                     <h3>Payment</h3>
                     <label>Accepted Cards</label>
@@ -161,11 +161,8 @@
     </div>
     <div class="col-25">
         <div class="container">
-            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-            <p><a href="#">Product 1</a> <span class="price">$1</span></p>
-            <p><a href="#">Product 2</a> <span class="price">$4</span></p>
-            <p><a href="#">Product 3</a> <span class="price">$3</span></p>
-            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
+            <p>Song: <span th:text="${purchasedSong.name}"></span> - <span th:text="${purchasedSong.artist}"></span><span class="price">$10</span></p>
             <hr>
             <p>Total <span class="price" style="color:black"><b>$10</b></span></p>
         </div>

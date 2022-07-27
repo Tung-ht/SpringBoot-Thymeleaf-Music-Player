@@ -22,6 +22,12 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
+    public Song getById(Long id) {
+        return songRepository.findById(id).
+                orElseThrow(() -> new NotFoundException("Song not found!"));
+    }
+
+    @Override
     public List<Song> getAll() {
         return songRepository.findAll();
     }
