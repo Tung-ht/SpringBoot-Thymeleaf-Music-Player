@@ -45,7 +45,7 @@ public class AuthController {
             model.addAttribute("name", user.getName());
             return "home";
         } else {
-            return "forward:/admin/";
+            return "redirect:/admin/";
         }
     }
 
@@ -62,7 +62,7 @@ public class AuthController {
             model.addAttribute("songs", songs);
             return "home";
         } else {
-            return "forward:/admin/";
+            return "redirect:/admin/";
         }
     }
 

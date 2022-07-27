@@ -492,10 +492,12 @@ const app = {
                         // console.log(1231231231234245245, listSong);
                         if(songNode.querySelectorAll(".premium")[0].textContent.trim() === "premium") {
                             if (confirm("Please purchase this song to listen!")){
-                                window.open("http://localhost:8888/payment", '_self');
+                                const songId = _this.songs[Number(songNode.dataset.index)].id;
+                                window.open("http://localhost:8888/payment?songId=" + songId, '_self');
                             }
                             return;
                         };
+                        console.log(_this.songs[Number(songNode.dataset.index)]);
                         // songNode.getAttribute('data-index') = songNode.dataset.index
                         // Dạng chuỗi <=> convert to number
                         _this.currentIndex = Number(songNode.dataset.index)
@@ -758,6 +760,19 @@ const app = {
     },
 
     loadCurrentSong: function () {
+        console.log(this.currentSong.name);
+        const songId = this.currentSong.id;
+        const song = this.listPurchaseSong.find(function(item) {
+            return item.id === songId;
+        })
+        console.log(song);
+        if (!song && this.currentSong.isPremium) {
+            this.currentIndex ++;
+            if (this.currentIndex >= this.songs.length) {
+                this.currentIndex = 0
+            }
+            this.loadCurrentSong();
+        }
 
         // Current Info in Footer
         info_name.textContent = this.currentSong.name

@@ -129,7 +129,7 @@
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form method="post" th:action="@{/pay}">
+            <form method="post" th:action="@{/pay(songId=${purchasedSongId})}">
                 <div class="col-50">
                     <h3>Payment</h3>
                     <label>Accepted Cards</label>

@@ -29,10 +29,10 @@ public class HomeController {
     public String retrieveFormLoginInfo(Model model,
                                         @AuthenticationPrincipal User user) {
         // In form-based login flow you get UserDetails as principal while in Oauth based flow you get Oauth2User
-        log.info("user.getUsername() =>" + user.getUsername());
-        log.info("user.getEmail() =>" + user.getEmail());
-        log.info("user.getAuthProvider() =>" + user.getAuthProvider());
-        log.info("user.getProviderId() =>" + user.getProviderId());
+        log.info("user.getUsername() => " + user.getUsername());
+        log.info("user.getEmail() => " + user.getEmail());
+        log.info("user.getAuthProvider() => " + user.getAuthProvider());
+        log.info("user.getProviderId() => " + user.getProviderId());
 
         List<Song> songs = songService.getAll();
         List<Song> purchasedSongs = userService.getPurchasedSong(user.getId());

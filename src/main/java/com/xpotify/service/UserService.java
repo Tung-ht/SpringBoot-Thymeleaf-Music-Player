@@ -10,7 +10,7 @@ public interface UserService {
 
     User save(User user);
 
-    void purchaseSong(Long userId, Song song);
+    void purchaseSong(Long userId, Long songId);
 
     List<Song> getPurchasedSong(Long userId);
 }
