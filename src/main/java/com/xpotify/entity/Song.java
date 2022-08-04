@@ -1,5 +1,6 @@
 package com.xpotify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Song {
     private String songLink;
     private String imgLink;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "purchasedSongs", fetch = FetchType.EAGER)
     List<User> users;
 

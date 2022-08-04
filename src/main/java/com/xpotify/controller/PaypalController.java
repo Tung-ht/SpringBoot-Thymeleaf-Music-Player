@@ -61,7 +61,7 @@ public class PaypalController {
                     "payment for song",
                     cancelUrl,
                     successUrl);
-//            userService.purchaseSong(user.getId(), songId);
+            userService.purchaseSong(user.getId(), songId);
             for (Links links : payment.getLinks()) {
                 if (links.getRel().equals("approval_url")) {
                     return "redirect:" + links.getHref();

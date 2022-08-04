@@ -198,6 +198,7 @@ const app = {
         })
 
         const listPurchaseSongHtmls = this.listPurchaseSong.map(function (song, index) {
+            console.log(45646574567, song);
             return `
             <div class="purchase_song_item" data-index="${index}">
                 ${song.name}--${song.artist}
@@ -210,8 +211,6 @@ const app = {
         listSongs_songs_main.forEach(function (list) {
             list.innerHTML = htmls.join("")
         })
-
-        console.log(45646574567, this.listPurchaseSong);
 
         list_purchase_song.innerHTML = listPurchaseSongHtmls.join("")
     },
@@ -489,10 +488,19 @@ const app = {
 
                     // Xử lý click vào bài hát
                     if (songNode) {
-                        // console.log(1231231231234245245, listSong);
-                        if(songNode.querySelectorAll(".premium")[0].textContent.trim() === "premium") {
+                        const songId = _this.songs[Number(songNode.dataset.index)].id;
+                        function contains(purchasedSongs, songId) {
+                            var i = purchasedSongs.length;
+                            while (i--) {
+                                if (purchasedSongs[i].id === songId) {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }
+                        if(songNode.querySelectorAll(".premium")[0].textContent.trim() === "premium"
+                            && !contains(purchasedSongs, songId)) {
                             if (confirm("Please purchase this song to listen!")){
-                                const songId = _this.songs[Number(songNode.dataset.index)].id;
                                 window.open("http://localhost:8888/payment?songId=" + songId, '_self');
                             }
                             return;
